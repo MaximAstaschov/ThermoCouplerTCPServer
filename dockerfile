@@ -1,17 +1,16 @@
 #Deriving the latest base image
-FROM python:latest
-
+FROM python:3-buster
 
 #Labels as key value pair
 LABEL Maintainer="astaschov@uni.mainz.de"
 Label build_date="07_11_22"
 
-WORKDIR ./
+WORKDIR /usr/src/app
+
+RUN pip3 install rpi.gpio board adafruit-blinka thermocouples_reference adafruit_ads1x15
+RUN pip3 install --upgrade setuptools adafruit-python-shell
+
 
 COPY TelnetServer.py ./
 
-
-#CMD instruction should be used to run the software
-#contained by your image, along with any arguments.
-
-CMD [ "python3", "./TelnetServer.py", "--host  "192.168.2.118"", "--port 5530"]
+CMD python3 TelnetServer.py --host "192.168.2.118" --port 5530

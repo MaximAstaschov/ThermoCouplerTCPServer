@@ -9,7 +9,6 @@ import board
 import busio
 import time
 from thermocouples_reference import thermocouples
-import matplotlib.pyplot as plt
 i2c = busio.I2C(board.SCL, board.SDA)
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
