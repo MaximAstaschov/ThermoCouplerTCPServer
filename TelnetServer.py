@@ -14,9 +14,11 @@ i2c = busio.I2C(board.SCL, board.SDA)
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 
-THERMO_TYPE = 'K'
+
 
 #-------Functions you want to call from a SCPI-command----------
+THERMO_TYPE = 'K'
+
 #Function for reading out ADS1115 Thermocoupler
 def getTemp(thermotype = 'K', ):
     ads = ADS.ADS1115(i2c)
@@ -26,9 +28,9 @@ def getTemp(thermotype = 'K', ):
     temp = type.inverse_CmV(chan.voltage*1000, Tref=0) #Converts the voltage to temp
     return "{}".format(temp) #returns temp as String
 #
-
-logger = logging.getLogger('scpi-server')
 #-----------------------------------------------------
+logger = logging.getLogger('scpi-server')
+
 
 #-------Just leave everything below like it is--------
 """Class for a general TCP Server"""
