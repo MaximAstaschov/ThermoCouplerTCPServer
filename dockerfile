@@ -7,8 +7,10 @@ Label build_date="07_11_22"
 
 WORKDIR /usr/src/app
 
-RUN pip3 install rpi.gpio board adafruit-blinka thermocouples_reference adafruit_ads1x15
-RUN pip3 install --upgrade setuptools adafruit-python-shell
+EXPOSE 5530
+
+RUN pip3 install rpi.gpio board adafruit-blinka thermocouples_reference adafruit-circuitpython-ads1x15
+RUN pip3 install --upgrade setuptools adafruit-python-shell 
 
 
 COPY TelnetServer.py ./
